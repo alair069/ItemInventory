@@ -67,7 +67,7 @@ class Main extends PluginBase implements Listener{
  }
  
  //When players process ItemInventory plugin Commands//     
-	public function OnCommand(CommandSender $s, Command $cmd, $label, array $args){
+	public function OnCommand(CommandSender $s, Command $cmd, string $label, array $args): bool{
 		if(empty($args[0])){
 			$s->sendMessage($this->prefix.c::RED."You Need help?: /ii help");
 		}
@@ -87,7 +87,7 @@ class Main extends PluginBase implements Listener{
 					$name=$s->getName();
 					if($args[1]==35){
 						$s->sendMessage($this->prefix."§cPls, change This id, and try again! Wait next Version...");
-						return;
+						return true;
 					}
 					$level=$s->getLevel()->getFolderName();
 					//$damage=0;
@@ -222,6 +222,7 @@ class Main extends PluginBase implements Listener{
 		}else{
     $s->sendMessage(c::RED."You not have permission to use this command");
   }
+		return true;
 	}
 	
 	//When players quit game, Return to old Inventory Contents//
